@@ -1,5 +1,9 @@
 package gsb.modele.dao;
 
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.Statement;
 
 /*
  * Créé le 23 sept. 2014
@@ -7,10 +11,7 @@ package gsb.modele.dao;
  * TODO Pour changer le modèle de ce fichier généré, allez à :
  * Fenêtre - Préférences - Java - Style de code - Modèles de code
  */
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.ResultSet;
-import java.sql.Statement;
+
 
 /**
  * @author Isabelle
@@ -33,10 +34,10 @@ public class ConnexionMySql { // DAO = Data Access Object
 	 */
 	public static void connecterBd(){
 		//connexion à la base de donnée à partir de jdbc
-		String url = "jdbc:mysql://192.168.60.62:3306/gsb"; // url : chaine de connexion
+		String url = "jdbc:mysql://192.172.1.12:3306/gsb"; // url : chaine de connexion
 		// try permet d'essayer de lancer la connexion
 		try {Class.forName("com.mysql.jdbc.Driver"); 
-			cnx = DriverManager.getConnection(url,"usergsb","password"); 
+			cnx = DriverManager.getConnection(url,"admindb","password"); 
 		} 
 		// si la connexion echoue un message d'erreur est affiché
         catch(Exception e) {  System.out.println("Echec lors de la connexion");  } 
