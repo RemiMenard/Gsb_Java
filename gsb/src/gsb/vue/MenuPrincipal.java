@@ -11,9 +11,11 @@ import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import javax.swing.ImageIcon;
 import javax.swing.JDesktopPane;
 import javax.swing.JFrame;
 import javax.swing.JInternalFrame;
+import javax.swing.JLabel;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
@@ -36,6 +38,9 @@ public class MenuPrincipal extends JFrame implements ActionListener {
 	protected JMenuBar mbar;
 	protected JMenu mMedecins;
 	protected JMenu mMedicaments;
+	protected JMenu mVisiteurs;
+	protected JMenu mStock;
+	protected JPanel p;
 
 	JMenu mVisites;
 
@@ -79,13 +84,33 @@ public class MenuPrincipal extends JFrame implements ActionListener {
 		JMenuItem mA2 = new JMenuItem("Ajout Visite");
 		mA2.addActionListener(this);
 		mVisites.add(mA2);
+		
+		mVisiteurs = new JMenu("Visiteur");
+		JMenuItem mB1 = new JMenuItem("Liste Visiteurs");
+		mB1.addActionListener(this); // installation d'un écouteur d'action
+		mVisiteurs.add(mB1);
+		JMenuItem mB2 = new JMenuItem("Ajout Visiteur");
+		mB2.addActionListener(this);
+		mVisiteurs.add(mB2);
+
+		mStock = new JMenu("Stock");
+		JMenuItem mS1 = new JMenuItem("Stock échantillons Visiteurs");
+		mS1.addActionListener(this); // installation d'un écouteur d'action
+		mStock.add(mS1);
+		JMenuItem mS2 = new JMenuItem("Ajout échantillons Visiteur");
+		mS2.addActionListener(this);
+		mStock.add(mS2);
 
 		mbar.add(mMedecins);
 		mbar.add(mMedicaments);
 		mbar.add(mVisites);
+		mbar.add(mVisiteurs);
+		mbar.add(mStock);
 		setJMenuBar(mbar);
 		this.setVisible(true);
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		
+
 	}
 
 	@Override
@@ -97,11 +122,29 @@ public class MenuPrincipal extends JFrame implements ActionListener {
 			if (ChoixOption.equals("Consultation Medecin")) {
 				// Creation d'une sous-fenêtre
 				ouvrirFenetre(new JIFMedecinCons());
-
-			} else if (ChoixOption.equals("Liste Medecins")) {
+			} 
+			
+			else if (ChoixOption.equals("Liste Medecins")) 
+			{
 				ouvrirFenetre(new JIFMedecinListeDic(this));
 			}
-
+			
+			else if (ChoixOption.equals("Liste Visiteurs")) 
+			{
+				ouvrirFenetre(new JIFListeVisiteur(this));
+			}
+			else if (ChoixOption.equals("Ajout Visiteur")) 
+			{
+				ouvrirFenetre(new JIFAjoutVisiteur());
+			}
+			else if (ChoixOption.equals("Stock échantillons Visiteurs")) 
+			{
+				ouvrirFenetre(new JIFListeStock(this));
+			}
+			else if (ChoixOption.equals("Ajout échantillons Visiteur")) 
+			{
+				ouvrirFenetre(new JIFAjoutEchantillon());
+			}
 		}
 
 	}

@@ -42,6 +42,7 @@ public class JIFMedecinListeCol extends JInternalFrame implements ActionListener
 	protected JTextField JTcodeMedecin;
 	protected JButton JBafficherFiche;
 	protected MenuPrincipal fenetreContainer;
+	
 
 	public JIFMedecinListeCol(MenuPrincipal uneFenetreContainer) {
 

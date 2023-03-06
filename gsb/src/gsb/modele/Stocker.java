@@ -1,25 +1,16 @@
 package gsb.modele;
 
 public class Stocker {
-	protected String codeStock;
 	protected int qteStock; 
 	public Visiteur unVisiteur; 
 	public Medicament unMedicament;
 	
-	public Stocker (String codeStock, int qteStock, Visiteur unVisiteur,Medicament unMedicament) {
-		this.codeStock=codeStock;
+	public Stocker (int qteStock, Visiteur unVisiteur,Medicament unMedicament) {
 		this.qteStock=qteStock;
 		this.unVisiteur=unVisiteur;
 		this.unMedicament=unMedicament;
 	}
 
-	public String getCodeStock() {
-		return codeStock;
-	}
-
-	public void setCodeStock(String codeStock) {
-		this.codeStock = codeStock;
-	}
 
 	public int getQteStock() {
 		return qteStock;

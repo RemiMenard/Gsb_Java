@@ -7,6 +7,7 @@
 package gsb.modele.dao;
 
 import gsb.modele.Localite;
+import gsb.modele.Visiteur;
 
 import java.sql.ResultSet;
 
@@ -34,5 +35,24 @@ public class LocaliteDao {
 		ConnexionMySql.fermerConnexionBd();
 		return uneLocalite;
 	}
+	
+	public static int creerLocalite(Localite uneLocalite){
+		String requeteInsertion;
+		int result = 0;
+		String cp= uneLocalite.getCodePostal();
+		String ville = uneLocalite.getVille();
+		
+		requeteInsertion = "insert into LOCALITE values('"+cp+"','"+ville+"')";
+		try{
+			result = ConnexionMySql.execReqMaj(requeteInsertion);
+		}
+		catch (Exception e){
+			System.out.println("echec insertion : "+requeteInsertion);
+		}
+		ConnexionMySql.fermerConnexionBd();	
+		return result;
+	}
+	
+
 
 }
